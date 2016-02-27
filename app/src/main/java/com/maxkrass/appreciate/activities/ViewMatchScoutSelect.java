@@ -34,7 +34,24 @@ public class ViewMatchScoutSelect extends BaseActivity {
 		setSupportActionBar(toolbar);
 		RecyclerView recyclerView = (RecyclerView) findViewById(R.id.match_card_list);
 		List<MatchRecord> leroy = Select.from(MatchRecord.class).where(Condition.prop("team_number").eq(teamNumber)).orderBy("CAST(team_number AS int)").list();
+		
 		if (leroy.size() < 1) finish();
+		for(int i = leroy.size() - 1; i >= 0; i--)
+		{
+			for(int j = leroy.size() - 1; j >= 0; j--)
+			{
+				if(i != j && leroy.get(i).getMatchNumber().equals(leroy.get(j).getMatchNumber()))
+				{
+					leroy.remove(j);
+					j++;
+					if(i >= leroy.size())
+					{
+						break;
+					}
+				}
+			}
+		}
+
 		recyclerView.setAdapter(new MatchCardAdapter(ViewMatchScoutSelect.this, leroy));
 		recyclerView.setHasFixedSize(true);         //Subject to change as card get fuller and information might be collapsed at first
 		/*if (leroy.size() > 0)
@@ -67,4 +84,6 @@ public class ViewMatchScoutSelect extends BaseActivity {
 			finish();
 		return true;
 	}
+	
+	
 }
