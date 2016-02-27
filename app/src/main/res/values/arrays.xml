@@ -24,7 +24,7 @@
 		<item>Rough Terrain</item>
 		<item>Low Bar</item>
 	</string-array>
-	<string-array name="highest_possible_stack">
+	<string-array name="highest_possible_shots">
 		<item>0</item>
 		<item>1</item>
 		<item>2</item>
@@ -32,6 +32,7 @@
 		<item>4</item>
 		<item>5</item>
 		<item>6</item>
+		<item>7</item>
 	</string-array>
 	<string-array name="num_cims">
 		<item>2</item>
