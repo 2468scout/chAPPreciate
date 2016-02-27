@@ -82,6 +82,10 @@ public class ViewMatchScoutSelect extends BaseActivity {
 		{
 			for (int innerLoop = 0; innerLoop < list.size(); innerLoop++)
 			{
+				if(outerLoop == -1)
+				{
+					break;
+				}
 				if(outerLoop != innerLoop)
 				{
 					String outerLoopString = list.get(outerLoop).getMatchNumber();
