@@ -15,7 +15,9 @@
 		android:layout_marginTop="4dp"
 		cardview:cardCornerRadius="2dp"
 		cardview:cardBackgroundColor="@color/white"
-		cardview:cardElevation="2dp">
+		cardview:cardElevation="2dp"
+		android:longClickable="false"
+		android:onClick="matchCardClicked">
 
 		<LinearLayout
 			android:layout_width="fill_parent"
@@ -30,7 +32,8 @@
 				android:paddingRight="@dimen/default_padding_keyline"
 				android:paddingEnd="@dimen/default_padding_keyline"
 				android:paddingTop="24dp"
-				android:paddingBottom="16dp">
+				android:paddingBottom="16dp"
+				android:id="@+id/match_number_frame_layout">
 
 				<TextView
 					android:id="@+id/match_number"
@@ -50,7 +53,8 @@
 				<LinearLayout
 					android:layout_width="fill_parent"
 					android:layout_height="wrap_content"
-					android:orientation="vertical">
+					android:orientation="vertical"
+					android:id="@+id/autonomous_linear_layout">
 
 					<TextView
 						android:layout_width="wrap_content"
@@ -68,8 +72,66 @@
 						android:orientation="vertical"/>
 
 					<FrameLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:id="@+id/defense_passed_frame_layout">
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_gravity="center_vertical"
+							android:text="Defense Passed:"/>
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_gravity="center_vertical|end"
+							android:id="@+id/defense_passed_label"
+							 />
+
+					</FrameLayout>
+
+					<FrameLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content">
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:text="Shot:"
+							android:layout_gravity="center_vertical"/>
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_gravity="center_vertical|end"
+							android:id="@+id/auto_shot_label"/>
+
+					</FrameLayout>
+
+					<FrameLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content">
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:text="Spy:"
+							android:layout_gravity="center_vertical"/>
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_gravity="center_vertical|end"
+							android:id="@+id/spy_label"/>
+
+
+					</FrameLayout>
+
+					<FrameLayout
 						android:layout_width="fill_parent"
-						android:layout_height="48.0dip">
+						android:layout_height="48.0dip"
+						android:id="@+id/auto_points_frame_layout">
 
 						<TextView
 							android:layout_width="wrap_content"
@@ -84,6 +146,8 @@
 							android:layout_gravity="center_vertical|end"/>
 
 					</FrameLayout>
+
+
 
 					<FrameLayout
 						android:layout_width="fill_parent"
@@ -103,7 +167,8 @@
 				<LinearLayout
 					android:layout_width="fill_parent"
 					android:layout_height="wrap_content"
-					android:orientation="vertical">
+					android:orientation="vertical"
+					android:id="@+id/teleop_linear_layout">
 
 					<TextView
 						android:layout_width="wrap_content"
@@ -119,6 +184,114 @@
 						android:layout_width="fill_parent"
 						android:layout_height="wrap_content"
 						android:orientation="vertical"/>
+
+					<FrameLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:id="@+id/preferred_defense_frame_layout">
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:text="Preferred Defense"
+							android:layout_gravity="center_vertical"/>
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_gravity="center_vertical|end"
+							android:id="@+id/preferred_defense_textview" />
+
+					</FrameLayout>
+
+					<FrameLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content">
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_gravity="center_vertical"
+							android:text="High Goal:"/>
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_gravity="center_vertical|end"
+							android:id="@+id/teleop_high_goal_label"/>
+
+					</FrameLayout>
+
+					<FrameLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content">
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:text="Low Goal:"
+							android:layout_gravity="center_vertical"/>
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_gravity="center_vertical|end"
+							android:id="@+id/teleop_low_goal_label"/>
+
+					</FrameLayout>
+
+					<FrameLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content">
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_gravity="center_vertical"
+							android:text="Miss:"/>
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_gravity="center_vertical|end"
+							android:id="@+id/teleop_miss_label"/>
+
+					</FrameLayout>
+
+					<FrameLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content">
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:text="Shooting accuracy:"
+							android:layout_gravity="center_vertical"/>
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_gravity="center_vertical|end"
+							android:id="@+id/shooting_accuracy_label"/>
+
+					</FrameLayout>
+
+					<FrameLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content">
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_gravity="center_vertical"
+							android:text="Scale:"/>
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_gravity="center_vertical|end"
+							android:id="@+id/scale_label"/>
+
+					</FrameLayout>
 
 					<FrameLayout
 						android:layout_width="match_parent"
