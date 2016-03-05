@@ -48,7 +48,61 @@ public class MatchRecord extends Record {
     boolean fast3;
     boolean fast4;
     boolean fast5;
-    ArrayList<String> shots;
+    String shots;
+
+    int defense1;
+    int defense2;
+    int defense3;
+    int defense4;
+    int defense5;
+
+    int defenseSpinner;
+
+    int spinner2;
+    int spinner3;
+    int spinner4;
+    int spinner5;
+    public int getDefense1() {
+        return defense1;
+    }
+
+    public void setDefense1(int defense1) {
+        this.defense1 = defense1;
+    }
+
+    public int getDefense2() {
+        return defense2;
+    }
+
+    public void setDefense2(int defense2) {
+        this.defense2 = defense2;
+    }
+
+    public int getDefense3() {
+        return defense3;
+    }
+
+    public void setDefense3(int defense3) {
+        this.defense3 = defense3;
+    }
+
+    public int getDefense4() {
+        return defense4;
+    }
+
+    public void setDefense4(int defense4) {
+        this.defense4 = defense4;
+    }
+
+    public int getDefense5() {
+        return defense5;
+    }
+
+    public void setDefense5(int defense5) {
+        this.defense5 = defense5;
+    }
+
+
 
     public boolean isFast1()
     {
@@ -96,7 +150,7 @@ public class MatchRecord extends Record {
 
 
 
-    int defenseSpinner;
+
 
     public int getSpinner2() {
         return spinner2;
@@ -130,10 +184,7 @@ public class MatchRecord extends Record {
         this.spinner5 = spinner5;
     }
 
-    int spinner2;
-    int spinner3;
-    int spinner4;
-    int spinner5;
+
 
     public void setDefenseSpinner(int defenseSpinner){
         this.defenseSpinner=defenseSpinner;
@@ -402,11 +453,34 @@ public class MatchRecord extends Record {
 
     public void setShots(ArrayList<String> shots)
     {
-        this.shots = shots;
+        this.shots = shots.toString();
     }
     public ArrayList<String> getShots()
     {
-        return shots;
+        return convertToStringToArrayList(shots);
+    }
+
+    public ArrayList<String> convertToStringToArrayList(String string)
+    {
+        ArrayList<String> returnList = new ArrayList<>();
+        String shot = "";
+        for (char c : string.toCharArray())
+        {
+            if(!shot.equals(""))
+            {
+                shot += c;
+                returnList.add(shot);
+                shot = "";
+            }
+            else
+            {
+                if(c != ' ' && c != '[' && c != ']' && c != ',')
+                {
+                    shot += c;
+                }
+            }
+        }
+        return returnList;
     }
 
 
