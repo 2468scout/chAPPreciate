@@ -17,7 +17,7 @@
 		cardview:cardBackgroundColor="@color/white"
 		cardview:cardElevation="2dp"
 		android:longClickable="false"
-		android:onClick="matchCardClicked">
+		>
 
 		<LinearLayout
 			android:layout_width="fill_parent"
