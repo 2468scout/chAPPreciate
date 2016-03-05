@@ -650,8 +650,15 @@ public class MatchScoutOneTeam extends BaseActivity implements View.OnClickListe
         matchRecord.setFast4(fast4.isChecked());
         matchRecord.setFast5(fast5.isChecked());
 
+        matchRecord.setDefense1(d1);
+        matchRecord.setDefense2(d2);
+        matchRecord.setDefense3(d3);
+        matchRecord.setDefense4(d4);
+        matchRecord.setDefense5(d5);
+
         matchRecord.setLowGoalAuto(Integer.parseInt(autoLowGoal.getText().toString()));
         matchRecord.setHighGoalAuto(Integer.parseInt(autoHighGoal.getText().toString()));
+        matchRecord.setShots(shots);
         List<MatchRecord> matchRecords = MatchRecord.listAll(MatchRecord.class);
         for(MatchRecord i : matchRecords)
         {
@@ -674,7 +681,7 @@ public class MatchScoutOneTeam extends BaseActivity implements View.OnClickListe
                 System.out.println("temAdapter is null");
             }
 
-            MainPagerAdapter.matchScouts.teamAdapter.add(matchRecord);
+            MainPagerAdapter.matchScouts.getTeamAdapter().add(matchRecord);
             finish();
         }
         catch (Exception e)
@@ -687,5 +694,3 @@ public class MatchScoutOneTeam extends BaseActivity implements View.OnClickListe
 
 
 
-
-}
